@@ -8,5 +8,11 @@
         "id": "home"
       }
     }
+  ],
+  "dataProviders": [
+    {
+      "key": "EXAMPLE",
+      "value": "https://api.workday.com/expense/v1/entries"
+    }
   ]
 }

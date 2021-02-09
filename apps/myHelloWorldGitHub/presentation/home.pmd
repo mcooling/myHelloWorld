@@ -1,5 +1,13 @@
 {
   "id": "home",
+  "endPoints" : [
+    {
+      "name" : "exampleData",
+      "baseUrlType" : "EXAMPLE",
+      "url" : "?expenseEntryStatus=dc74b9a0446c11de98360015c5e6daf6&entryType=744524587a9b4f74bdaa69fd7ffb91fc",
+      "authType" : "sso"
+    }
+  ],
   "presentation": {
     "title": {
       "type": "title",
@@ -13,6 +21,11 @@
           "id": "hello",
           "label": "Hello World!",
           "value": "Welcome to your <b>first Workday Extend App Marc!</b>. Deployed by the Workday Extend Plugin for IntelliJ."
+        },
+        {
+          "type" : "text",
+          "label" : "Data from REST API",
+          "value" : "${exampleData.data}"
         }
       ]
     },
