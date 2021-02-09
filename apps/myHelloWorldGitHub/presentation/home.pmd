@@ -26,6 +26,61 @@
           "type" : "text",
           "label" : "Data from REST API",
           "value" : "${exampleData.data}"
+        },
+        {
+          "label" : "Data from REST API as a GRID",
+          "id" : "apiexp",
+          "type" : "grid",
+          "rows" : "${exampleData.data}",
+          "gridType":"LIST",
+          "rowVariableName": "apidata",
+          "columns" : [
+            {
+              "cellTemplate" : {
+                "type" : "text",
+                "value" : "${apidata.id}"
+              },
+              "columnId" : "v0",
+              "label" : "WID",
+              "type" : "column"},
+            {
+              "cellTemplate" : {
+                "type" : "date",
+                "value" : "${apidata.date}"
+              },
+              "columnId" : "v1",
+              "label" : "Date",
+              "type" : "column"
+            },
+            {
+              "cellTemplate" : {
+                "type" : "currency",
+                "format" : "#,##0.00",
+                "value" : "${apidata.amount.value}"
+              },
+              "columnId" : "v2",
+              "label" : "Amount",
+              "type" : "column"
+            },
+            {
+              "cellTemplate" : {
+                "type" : "text",
+                "value" : "${apidata.amount.currency}"
+              },
+              "columnId" : "v3",
+              "label" : "Currency",
+              "type" : "column"
+            },
+            {
+              "cellTemplate" : {
+                "type" : "text",
+                "value" : "${apidata.memo}"
+              },
+              "columnId" : "v4",
+              "label" : "Memo",
+              "type" : "column"
+            }
+          ]
         }
       ]
     },

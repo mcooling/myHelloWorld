@@ -15,5 +15,9 @@
       "description": "English"
     }
   ],
-  "applicationId": "myHelloWorldGitHub"
+  "applicationId": "myHelloWorldGitHub",
+  "titles" : [ {
+    "value" : "My Hello World with Expenses Explorer",
+    "languageCode" : "en-US"
+  } ]
 }
