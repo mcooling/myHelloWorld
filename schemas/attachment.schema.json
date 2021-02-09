@@ -1,0 +1,411 @@
+{
+  "type": "object",
+  "id": "#/Attachment",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 32767
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[A-Z][a-z0-9]+([A-Z][a-z0-9]*)*"
+    },
+    "label": {
+      "type": "string",
+      "pattern": "^[A-Z]+([A-Za-z0-9:\\-\\s]*)*"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/definitions/text"
+          },
+          {
+            "$ref": "#/definitions/decimal"
+          },
+          {
+            "$ref": "#/definitions/integer"
+          },
+          {
+            "$ref": "#/definitions/boolean"
+          },
+          {
+            "$ref": "#/definitions/date"
+          },
+          {
+            "$ref": "#/definitions/relationship"
+          }
+        ]
+      }
+    },
+    "derivedFields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/definitions/derivedText"
+          },
+          {
+            "$ref": "#/definitions/derivedBoolean"
+          }
+        ]
+      }
+    },
+    "defaultSecurityDomains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defaultCollection": {
+      "type": "object",
+      "id": "BusinessObjectCollection",
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+([A-Z][a-z0-9]*)*"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "defaultSecurityDomains",
+    "defaultCollection"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "text": {
+      "type": "object",
+      "id": "TextField",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32767
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+([A-Z][a-z0-9]*)*"
+        },
+        "label": {
+          "type": "string"
+        },
+        "securityDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "TEXT"
+          ]
+        },
+        "useForDisplay": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "decimal": {
+      "type": "object",
+      "id": "DecimalField",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32767
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+([A-Z][a-z0-9]*)*"
+        },
+        "label": {
+          "type": "string"
+        },
+        "securityDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "DECIMAL"
+          ]
+        },
+        "decimals": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "integer": {
+      "type": "object",
+      "id": "IntegerField",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32767
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+([A-Z][a-z0-9]*)*"
+        },
+        "label": {
+          "type": "string"
+        },
+        "securityDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "INTEGER"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "boolean": {
+      "type": "object",
+      "id": "BooleanField",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32767
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+([A-Z][a-z0-9]*)*"
+        },
+        "label": {
+          "type": "string"
+        },
+        "securityDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "BOOLEAN"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "date": {
+      "type": "object",
+      "id": "DateField",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32767
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+([A-Z][a-z0-9]*)*"
+        },
+        "label": {
+          "type": "string"
+        },
+        "securityDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "DATE"
+          ]
+        },
+        "precision": {
+          "type": "string",
+          "enum": [
+            "MILLISECOND",
+            "SECOND",
+            "MINUTE",
+            "HOUR",
+            "DAY",
+            "MONTH",
+            "YEAR"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "relationship": {
+      "type": "object",
+      "id": "Relationship",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32767
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+([A-Z][a-z0-9]*)*"
+        },
+        "label": {
+          "type": "string"
+        },
+        "securityDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "SINGLE_INSTANCE"
+          ]
+        },
+        "target": {
+          "type": "string"
+        },
+        "secureByTarget": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "derivedText": {
+      "type": "object",
+      "id": "DerivedTextField",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32767
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+([A-Z][a-z0-9]*)*"
+        },
+        "label": {
+          "type": "string"
+        },
+        "securityDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "TEXT"
+          ]
+        },
+        "expression": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "derivedBoolean": {
+      "type": "object",
+      "id": "DerivedTextField",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32767
+        },
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+([A-Z][a-z0-9]*)*"
+        },
+        "label": {
+          "type": "string"
+        },
+        "securityDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "BOOLEAN"
+          ]
+        },
+        "expression": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "type": "object",
+  "id": "#/BusinessProcess",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 32767
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[A-Z][a-z0-9]+([A-Z][a-z0-9]*)*"
+    },
+    "label": {
+      "type": "string",
+      "pattern": "^[A-Z]+([A-Za-z0-9:\\-\\s]*)*"
+    },
+    "description": {
+      "type": "string"
+    },
+    "targetBusinessObject": {
+      "type": "string"
+    },
+    "allowsCancel": {
+      "type": "boolean"
+    },
+    "approvalStep": {
+      "type": "object",
+      "id": "ApprovalStep",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "APPROVE",
+              "DENY",
+              "SEND_BACK"
+            ]
+          }
+        },
+        "pageRoute": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "actions"
+      ],
+      "additionalProperties": false
+    },
+    "revisePageRoute": {
+      "type": "string"
+    },
+    "details": {
+      "type": "object",
+      "properties": {
+        "pageRoute": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "useForWorkflow": {
+      "type": "boolean"
+    },
+    "actionSteps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 32767
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Z][a-z0-9]+([A-Z][a-z0-9]*)*"
+          },
+          "label": {
+            "type": "string",
+            "pattern": "^[A-Z]+([A-Za-z0-9:\\-\\s]*)*"
+          },
+          "description": {
+            "type": "string"
+          },
+          "pageRoute": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "pageRoute"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "targetBusinessObject"
+  ],
+  "additionalProperties": false
+}

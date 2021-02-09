@@ -1,0 +1,12 @@
+{
+  "applicationId": "myHelloWorldGitHub",
+  "tasks": [
+    {
+      "id": "root",
+      "routingPattern": "/",
+      "page": {
+        "id": "home"
+      }
+    }
+  ]
+}

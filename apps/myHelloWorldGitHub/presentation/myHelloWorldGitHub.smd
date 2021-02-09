@@ -1,0 +1,19 @@
+{
+  "id": "myHelloWorldGitHub",
+  "siteId": "myHelloWorldGitHub",
+  "siteAuth": {
+    "authTypes": [
+      {
+        "id": "sso",
+        "scheme": "SSO"
+      }
+    ]
+  },
+  "languages": [
+    {
+      "code": "en-US",
+      "description": "English"
+    }
+  ],
+  "applicationId": "myHelloWorldGitHub"
+}
