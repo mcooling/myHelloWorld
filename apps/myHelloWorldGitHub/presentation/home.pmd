@@ -12,7 +12,7 @@
           "type": "richText",
           "id": "hello",
           "label": "Hello World!",
-          "value": "Welcome to your <b>Workday Extend</b> App. Deployed by the Workday Extend Plugin for IntelliJ."
+          "value": "Welcome to your <b>first Workday Extend App Marc!</b>. Deployed by the Workday Extend Plugin for IntelliJ."
         }
       ]
     },
