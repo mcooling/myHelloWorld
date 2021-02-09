@@ -81,6 +81,17 @@
               "type" : "column"
             }
           ]
+        },
+        {
+          "type": "button",
+          "id": "editExpDetails",
+          "label":"Edit Expense Details",
+          "taskReference": {
+            "type":"taskReference",
+            "taskId": "sampleEditPage"
+          },
+          "action":"SECONDARY",
+          "commandHttpMethod":"GET"
         }
       ]
     },

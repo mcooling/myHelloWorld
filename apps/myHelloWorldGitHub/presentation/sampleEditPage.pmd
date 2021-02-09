@@ -1,0 +1,50 @@
+{
+  "id": "sampleEditPage",
+  "endPoints": [
+  ],
+  "outboundData": {
+    "outboundEndPoints": [
+    ]
+  },
+  "presentation": {
+    "headerSize": "VPS_DEFAULT",
+    "pageType": "edit",
+    "title": {
+      "type": "title",
+      "label": "Workday Extend",
+      "enabled": false
+    },
+    "body": {
+      "type": "section",
+      "horizontal": false,
+      "children": [
+        {
+          "type": "button",
+          "id": "home",
+          "label":"Home",
+          "taskReference": {
+            "type":"taskReference",
+            "taskId": "root"
+          },
+          "action":"SECONDARY",
+          "commandHttpMethod":"GET"
+        },
+        {
+          "type": "text",
+          "id": "hello",
+          "label": "Hello World, Sample Edit Page"
+        }
+      ]
+    },
+    "footer": {
+      "type": "footer",
+      "children": [
+        {
+          "type": "richText",
+          "enabled": "false",
+          "value": "Powered By Workday Extend"
+        }
+      ]
+    }
+  }
+}
