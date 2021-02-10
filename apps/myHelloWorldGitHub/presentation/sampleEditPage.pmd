@@ -6,6 +6,14 @@
       "baseUrlType" : "EXAMPLE",
       "url" : "?expenseEntryStatus=dc74b9a0446c11de98360015c5e6daf6&entryType=744524587a9b4f74bdaa69fd7ffb91fc",
       "authType" : "sso"
+    },
+    {
+      "name" : "expensesDataInfo",
+      "baseUrlType" : "EXAMPLE",
+      "url" : "/${dependenceDropdown.value[0]}",
+      "exclude":"${empty dependenceDropdown.value}",
+      "deferred": true,
+      "authType" : "sso"
     }
   ],
   "outboundData": {
@@ -49,16 +57,6 @@
           "commandHttpMethod":"GET"
         },
         {
-          "type": "text",
-          "id": "hello",
-          "label": "Hello World, Sample Edit Page"
-        }
-      ]
-    },
-    "footer": {
-      "type": "footer",
-      "children": [
-        {
           "type": "fieldSet",
           "title": "Expense Details for Row 4",
           "children": [
@@ -98,6 +96,16 @@
               "valueOutBinding": "expensesPut.amount.value"
             }
           ]
+        }
+      ]
+    },
+    "footer": {
+      "type": "footer",
+      "children": [
+        {
+          "type": "richText",
+          "enabled": "false",
+          "value": "Powered By Workday Extend"
         }
       ]
     }
