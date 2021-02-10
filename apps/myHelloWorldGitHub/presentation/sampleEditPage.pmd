@@ -20,7 +20,7 @@
     "outboundEndPoints": [
       {
         "name" : "expensesPut",
-        "url" : "/${expensesData.data[3].id}",
+        "url" : "/${dependentData.id}",
         "baseUrlType" : "EXAMPLE",
         "authType" : "sso",
         "httpMethod" : "PUT",
@@ -58,42 +58,61 @@
         },
         {
           "type": "fieldSet",
-          "title": "Expense Details for Row 4",
+          "title": "Expense Details with Dropdown",
           "children": [
             {
-              "type": "text",
-              "label": "ID",
-              "enabled" : "false",
-              "value": "${expensesData.data[3].id}"
+              "type" : "dropdown",
+              "id" : "dependenceDropdown",
+              "label" : "Select an Expense",
+              "displayKey": "id",
+              "values" : "${expensesData.data}"
             },
+
             {
-              "type": "text",
-              "label": "Date",
-              "enabled" : "false",
-              "required" : "true",
-              "value": "${expensesData.data[3].date}",
-              "valueOutBinding": "expensesPut.date"
-            },
-            {
-              "type": "text",
-              "label": "Memo",
-              "enabled" : "true",
-              "value": "${expensesData.data[3].memo}",
-              "valueOutBinding": "expensesPut.memo"
-            },
-            {
-              "type": "text",
-              "label": "Currency",
-              "enabled":"false",
-              "value": "${expensesData.data[3].amount.currency}",
-              "valueOutBinding": "expensesPut.amount.currency"
-            },
-            {
-              "type": "text",
-              "label": "Amount",
-              "enabled":"false",
-              "value": "${expensesData.data[3].amount.value}",
-              "valueOutBinding": "expensesPut.amount.value"
+              "type": "fieldSet",
+              "title": "Selected Expense Info",
+              "children": [
+                {
+                  "type": "fetchData",
+                  "name": "dependentData",
+                  "deferredEndPoint": "${expensesDataInfo}"
+                },
+                {
+                  "type": "text",
+                  "label": "ID",
+                  "enabled": "false",
+                  "value": "${dependentData.id}"
+                },
+                {
+                  "type": "text",
+                  "label": "Date",
+                  "enabled": "false",
+                  "required": "true",
+                  "value": "${dependentData.date}",
+                  "valueOutBinding": "expensesPut.date"
+                },
+                {
+                  "type": "text",
+                  "label": "Memo",
+                  "enabled": "true",
+                  "value": "${dependentData.memo}",
+                  "valueOutBinding": "expensesPut.memo"
+                },
+                {
+                  "type": "text",
+                  "label": "Currency",
+                  "enabled": "false",
+                  "value": "${dependentData.amount.currency}",
+                  "valueOutBinding": "expensesPut.amount.currency"
+                },
+                {
+                  "type": "text",
+                  "label": "Amount",
+                  "enabled": "false",
+                  "value": "${dependentData.amount.value}",
+                  "valueOutBinding": "expensesPut.amount.value"
+                }
+              ]
             }
           ]
         }
