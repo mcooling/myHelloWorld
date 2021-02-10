@@ -59,9 +59,45 @@
       "type": "footer",
       "children": [
         {
-          "type": "richText",
-          "enabled": "false",
-          "value": "Powered By Workday Extend"
+          "type": "fieldSet",
+          "title": "Expense Details for Row 4",
+          "children": [
+            {
+              "type": "text",
+              "label": "ID",
+              "enabled" : "false",
+              "value": "${expensesData.data[3].id}"
+            },
+            {
+              "type": "text",
+              "label": "Date",
+              "enabled" : "false",
+              "required" : "true",
+              "value": "${expensesData.data[3].date}",
+              "valueOutBinding": "expensesPut.date"
+            },
+            {
+              "type": "text",
+              "label": "Memo",
+              "enabled" : "true",
+              "value": "${expensesData.data[3].memo}",
+              "valueOutBinding": "expensesPut.memo"
+            },
+            {
+              "type": "text",
+              "label": "Currency",
+              "enabled":"false",
+              "value": "${expensesData.data[3].amount.currency}",
+              "valueOutBinding": "expensesPut.amount.currency"
+            },
+            {
+              "type": "text",
+              "label": "Amount",
+              "enabled":"false",
+              "value": "${expensesData.data[3].amount.value}",
+              "valueOutBinding": "expensesPut.amount.value"
+            }
+          ]
         }
       ]
     }
