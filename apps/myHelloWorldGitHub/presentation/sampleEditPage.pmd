@@ -1,9 +1,28 @@
 {
   "id": "sampleEditPage",
   "endPoints": [
+    {
+      "name" : "expensesData",
+      "baseUrlType" : "EXAMPLE",
+      "url" : "?expenseEntryStatus=dc74b9a0446c11de98360015c5e6daf6&entryType=744524587a9b4f74bdaa69fd7ffb91fc",
+      "authType" : "sso"
+    }
   ],
   "outboundData": {
     "outboundEndPoints": [
+      {
+        "name" : "expensesPut",
+        "url" : "/${expensesData.data[3].id}",
+        "baseUrlType" : "EXAMPLE",
+        "authType" : "sso",
+        "httpMethod" : "PUT",
+        "headers" : [
+          {
+            "name" : "content-type",
+            "value" : "application/json"
+          }
+        ]
+      }
     ]
   },
   "presentation": {
